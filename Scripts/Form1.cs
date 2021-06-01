@@ -25,6 +25,7 @@ namespace DieGarage
             welt = new Welt(einstellungen);
             UpdateGUI();
             label_Info.Text = string.Empty;
+            Timer.Start();
         }
 
         private void Button_Befahren_Click(object sender, EventArgs e)
@@ -126,7 +127,37 @@ namespace DieGarage
             var etage = welt.garage.parkstellen[id].etage;
             var art = welt.garage.parkstellen[id].fahrzeug.fahrzeugart;
             var kennzeichen = welt.garage.parkstellen[id].fahrzeug.kennzeichen;
-            label_Info.Text = "Das " + art + " mit Kennzeichen: " + kennzeichen + " steht auf Etage: " + etage + " auf Platz: " + id;
+            label_Info.Text = "Art: " + art + "\n\nKennzeichen: " + kennzeichen + "\n\nEtage: " + etage + "\n\nPlatz: " + id;
+        }
+
+        private void Button_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (welt is null) return;
+            welt.time += 0.1d * welt.speed;
+            welt.time = Math.Round(welt.time, 1);
+            label_VergangeneZeit.Text = welt.time.ToString();
+        }
+
+        private void Button_StartTime_Click(object sender, EventArgs e)
+        {
+            if (welt is null) return;
+            Timer.Start();
+        }
+
+        private void Button_StopTime_Click(object sender, EventArgs e)
+        {
+            if (welt is null) return;
+            Timer.Stop();
+        }
+
+        private void TrackBar_Speed_Scroll(object sender, EventArgs e)
+        {
+            welt.speed = TrackBar_Speed.Value;
         }
     }
 }

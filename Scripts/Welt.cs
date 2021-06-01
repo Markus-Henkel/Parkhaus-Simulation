@@ -4,6 +4,8 @@ namespace DieGarage
 {
     public class Welt
     {
+        public double time;
+        public double speed = 1;
         public Garage garage;
         public List<Fahrzeug> ungeparkteFahrzeuge;
 
