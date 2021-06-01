@@ -49,6 +49,8 @@ namespace DieGarage
             this.Button_CheckCar = new System.Windows.Forms.Button();
             this.label_FahrzeugeInWelt = new System.Windows.Forms.Label();
             this.FahrzeugeInWelt = new System.Windows.Forms.NumericUpDown();
+            this.label_arrow_left = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Decks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParkplaetzePerDeck)).BeginInit();
             this.panel_Konfiguration.SuspendLayout();
@@ -163,7 +165,7 @@ namespace DieGarage
             this.ProgressBar_Auslastung.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ProgressBar_Auslastung.Location = new System.Drawing.Point(15, 517);
             this.ProgressBar_Auslastung.Name = "ProgressBar_Auslastung";
-            this.ProgressBar_Auslastung.Size = new System.Drawing.Size(523, 41);
+            this.ProgressBar_Auslastung.Size = new System.Drawing.Size(547, 41);
             this.ProgressBar_Auslastung.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.ProgressBar_Auslastung.TabIndex = 7;
             // 
@@ -190,7 +192,7 @@ namespace DieGarage
             // 
             this.Button_Befahren.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Button_Befahren.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Button_Befahren.Location = new System.Drawing.Point(198, 416);
+            this.Button_Befahren.Location = new System.Drawing.Point(255, 118);
             this.Button_Befahren.Name = "Button_Befahren";
             this.Button_Befahren.Size = new System.Drawing.Size(75, 23);
             this.Button_Befahren.TabIndex = 10;
@@ -202,7 +204,7 @@ namespace DieGarage
             // 
             this.Button_Verlassen.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Button_Verlassen.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Button_Verlassen.Location = new System.Drawing.Point(415, 416);
+            this.Button_Verlassen.Location = new System.Drawing.Point(244, 450);
             this.Button_Verlassen.Name = "Button_Verlassen";
             this.Button_Verlassen.Size = new System.Drawing.Size(86, 23);
             this.Button_Verlassen.TabIndex = 11;
@@ -215,9 +217,9 @@ namespace DieGarage
             this.Geparkte_Fahrzeuge.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Geparkte_Fahrzeuge.ForeColor = System.Drawing.SystemColors.Window;
             this.Geparkte_Fahrzeuge.FormattingEnabled = true;
-            this.Geparkte_Fahrzeuge.Location = new System.Drawing.Point(155, 157);
+            this.Geparkte_Fahrzeuge.Location = new System.Drawing.Point(15, 118);
             this.Geparkte_Fahrzeuge.Name = "Geparkte_Fahrzeuge";
-            this.Geparkte_Fahrzeuge.Size = new System.Drawing.Size(161, 251);
+            this.Geparkte_Fahrzeuge.Size = new System.Drawing.Size(161, 355);
             this.Geparkte_Fahrzeuge.TabIndex = 12;
             // 
             // Ungeparkte_Fahrzeuge
@@ -225,9 +227,9 @@ namespace DieGarage
             this.Ungeparkte_Fahrzeuge.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Ungeparkte_Fahrzeuge.ForeColor = System.Drawing.SystemColors.Window;
             this.Ungeparkte_Fahrzeuge.FormattingEnabled = true;
-            this.Ungeparkte_Fahrzeuge.Location = new System.Drawing.Point(374, 157);
+            this.Ungeparkte_Fahrzeuge.Location = new System.Drawing.Point(401, 118);
             this.Ungeparkte_Fahrzeuge.Name = "Ungeparkte_Fahrzeuge";
-            this.Ungeparkte_Fahrzeuge.Size = new System.Drawing.Size(161, 251);
+            this.Ungeparkte_Fahrzeuge.Size = new System.Drawing.Size(161, 355);
             this.Ungeparkte_Fahrzeuge.TabIndex = 13;
             // 
             // label_Info
@@ -240,7 +242,7 @@ namespace DieGarage
             // label_UngeparkteFahrzeuge
             // 
             this.label_UngeparkteFahrzeuge.AutoSize = true;
-            this.label_UngeparkteFahrzeuge.Location = new System.Drawing.Point(374, 141);
+            this.label_UngeparkteFahrzeuge.Location = new System.Drawing.Point(425, 100);
             this.label_UngeparkteFahrzeuge.Name = "label_UngeparkteFahrzeuge";
             this.label_UngeparkteFahrzeuge.Size = new System.Drawing.Size(113, 13);
             this.label_UngeparkteFahrzeuge.TabIndex = 15;
@@ -249,7 +251,7 @@ namespace DieGarage
             // label_GeparkteFahrzeuge
             // 
             this.label_GeparkteFahrzeuge.AutoSize = true;
-            this.label_GeparkteFahrzeuge.Location = new System.Drawing.Point(156, 141);
+            this.label_GeparkteFahrzeuge.Location = new System.Drawing.Point(38, 100);
             this.label_GeparkteFahrzeuge.Name = "label_GeparkteFahrzeuge";
             this.label_GeparkteFahrzeuge.Size = new System.Drawing.Size(104, 13);
             this.label_GeparkteFahrzeuge.TabIndex = 16;
@@ -259,7 +261,7 @@ namespace DieGarage
             // 
             this.Button_CheckCar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Button_CheckCar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Button_CheckCar.Location = new System.Drawing.Point(20, 157);
+            this.Button_CheckCar.Location = new System.Drawing.Point(235, 274);
             this.Button_CheckCar.Name = "Button_CheckCar";
             this.Button_CheckCar.Size = new System.Drawing.Size(117, 40);
             this.Button_CheckCar.TabIndex = 17;
@@ -295,12 +297,32 @@ namespace DieGarage
             0,
             0});
             // 
+            // label_arrow_left
+            // 
+            this.label_arrow_left.AutoSize = true;
+            this.label_arrow_left.Location = new System.Drawing.Point(198, 144);
+            this.label_arrow_left.Name = "label_arrow_left";
+            this.label_arrow_left.Size = new System.Drawing.Size(133, 13);
+            this.label_arrow_left.TabIndex = 18;
+            this.label_arrow_left.Text = "<-<-<-<-<-<-------------------------";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(242, 434);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "--------------------------->->->->->";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(577, 570);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_arrow_left);
             this.Controls.Add(this.Button_CheckCar);
             this.Controls.Add(this.label_GeparkteFahrzeuge);
             this.Controls.Add(this.label_UngeparkteFahrzeuge);
@@ -350,6 +372,8 @@ namespace DieGarage
         private System.Windows.Forms.Button Button_CheckCar;
         private System.Windows.Forms.NumericUpDown FahrzeugeInWelt;
         private System.Windows.Forms.Label label_FahrzeugeInWelt;
+        private System.Windows.Forms.Label label_arrow_left;
+        private System.Windows.Forms.Label label1;
     }
 }
 
