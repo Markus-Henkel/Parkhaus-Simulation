@@ -11,10 +11,30 @@ namespace DieGarage
         {
             garage = new Garage(_einstellungen);
             ungeparkteFahrzeuge = new List<Fahrzeug>();
-            for (int i = 0; i < garage.kapazität; i++)
+            var seedAdd = 0;
+            for (int i = 0; i < _einstellungen.fahrzeugeInWelt; i++)
             {
-                ungeparkteFahrzeuge.Add(new Fahrzeug(i));
+                var fahrzeug = new Fahrzeug(i);
+                var kennzeichen = fahrzeug.kennzeichen;
+                while (!IsKennzeichenUnique(kennzeichen))
+                {
+                    seedAdd++;
+                    kennzeichen = HelperFunctions.CreateKennzeichen(i + seedAdd);
+                }
+                fahrzeug.kennzeichen = kennzeichen;
+                ungeparkteFahrzeuge.Add(fahrzeug);
             }
+        }
+        bool IsKennzeichenUnique(string kennzeichen)
+        {
+            for (int i = 0; i < ungeparkteFahrzeuge.Count; i++)
+            {
+                if (kennzeichen == ungeparkteFahrzeuge[i].kennzeichen)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

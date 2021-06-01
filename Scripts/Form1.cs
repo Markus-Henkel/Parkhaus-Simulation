@@ -21,7 +21,7 @@ namespace DieGarage
 
         private void Button_WeltGenerieren_Click(object sender, EventArgs e)
         {
-            einstellungen = new Einstellungen((int)Decks.Value, (int)ParkplaetzePerDeck.Value);
+            einstellungen = new Einstellungen((int)Decks.Value, (int)ParkplaetzePerDeck.Value,(int)FahrzeugeInWelt.Value);
             welt = new Welt(einstellungen);
             UpdateGUI();
             label_Info.Text = string.Empty;

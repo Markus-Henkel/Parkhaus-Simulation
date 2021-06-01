@@ -47,9 +47,12 @@ namespace DieGarage
             this.label_UngeparkteFahrzeuge = new System.Windows.Forms.Label();
             this.label_GeparkteFahrzeuge = new System.Windows.Forms.Label();
             this.Button_CheckCar = new System.Windows.Forms.Button();
+            this.label_FahrzeugeInWelt = new System.Windows.Forms.Label();
+            this.FahrzeugeInWelt = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.Decks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParkplaetzePerDeck)).BeginInit();
             this.panel_Konfiguration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FahrzeugeInWelt)).BeginInit();
             this.SuspendLayout();
             // 
             // Decks
@@ -103,7 +106,7 @@ namespace DieGarage
             // label_Decks
             // 
             this.label_Decks.AutoSize = true;
-            this.label_Decks.Location = new System.Drawing.Point(1, 4);
+            this.label_Decks.Location = new System.Drawing.Point(4, 4);
             this.label_Decks.Name = "label_Decks";
             this.label_Decks.Size = new System.Drawing.Size(41, 13);
             this.label_Decks.TabIndex = 2;
@@ -112,7 +115,7 @@ namespace DieGarage
             // label_ParkplaetzePerDeck
             // 
             this.label_ParkplaetzePerDeck.AutoSize = true;
-            this.label_ParkplaetzePerDeck.Location = new System.Drawing.Point(139, 4);
+            this.label_ParkplaetzePerDeck.Location = new System.Drawing.Point(143, 4);
             this.label_ParkplaetzePerDeck.Name = "label_ParkplaetzePerDeck";
             this.label_ParkplaetzePerDeck.Size = new System.Drawing.Size(106, 13);
             this.label_ParkplaetzePerDeck.TabIndex = 3;
@@ -122,7 +125,7 @@ namespace DieGarage
             // 
             this.Button_WeltGenerieren.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Button_WeltGenerieren.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Button_WeltGenerieren.Location = new System.Drawing.Point(394, 11);
+            this.Button_WeltGenerieren.Location = new System.Drawing.Point(418, 11);
             this.Button_WeltGenerieren.Name = "Button_WeltGenerieren";
             this.Button_WeltGenerieren.Size = new System.Drawing.Size(117, 35);
             this.Button_WeltGenerieren.TabIndex = 4;
@@ -134,6 +137,8 @@ namespace DieGarage
             // 
             this.panel_Konfiguration.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel_Konfiguration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_Konfiguration.Controls.Add(this.FahrzeugeInWelt);
+            this.panel_Konfiguration.Controls.Add(this.label_FahrzeugeInWelt);
             this.panel_Konfiguration.Controls.Add(this.label_PlaetzeInsgesamt);
             this.panel_Konfiguration.Controls.Add(this.Decks);
             this.panel_Konfiguration.Controls.Add(this.Button_WeltGenerieren);
@@ -142,7 +147,7 @@ namespace DieGarage
             this.panel_Konfiguration.Controls.Add(this.label_ParkplaetzePerDeck);
             this.panel_Konfiguration.Location = new System.Drawing.Point(12, 13);
             this.panel_Konfiguration.Name = "panel_Konfiguration";
-            this.panel_Konfiguration.Size = new System.Drawing.Size(523, 60);
+            this.panel_Konfiguration.Size = new System.Drawing.Size(553, 60);
             this.panel_Konfiguration.TabIndex = 5;
             // 
             // label_PlaetzeInsgesamt
@@ -262,12 +267,40 @@ namespace DieGarage
             this.Button_CheckCar.UseVisualStyleBackColor = false;
             this.Button_CheckCar.Click += new System.EventHandler(this.Button_CheckCar_Click);
             // 
+            // label_FahrzeugeInWelt
+            // 
+            this.label_FahrzeugeInWelt.AutoSize = true;
+            this.label_FahrzeugeInWelt.Location = new System.Drawing.Point(269, 4);
+            this.label_FahrzeugeInWelt.Name = "label_FahrzeugeInWelt";
+            this.label_FahrzeugeInWelt.Size = new System.Drawing.Size(57, 13);
+            this.label_FahrzeugeInWelt.TabIndex = 6;
+            this.label_FahrzeugeInWelt.Text = "Fahrzeuge";
+            // 
+            // FahrzeugeInWelt
+            // 
+            this.FahrzeugeInWelt.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.FahrzeugeInWelt.ForeColor = System.Drawing.SystemColors.Window;
+            this.FahrzeugeInWelt.Location = new System.Drawing.Point(268, 20);
+            this.FahrzeugeInWelt.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.FahrzeugeInWelt.Name = "FahrzeugeInWelt";
+            this.FahrzeugeInWelt.Size = new System.Drawing.Size(120, 20);
+            this.FahrzeugeInWelt.TabIndex = 7;
+            this.FahrzeugeInWelt.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(547, 570);
+            this.ClientSize = new System.Drawing.Size(577, 570);
             this.Controls.Add(this.Button_CheckCar);
             this.Controls.Add(this.label_GeparkteFahrzeuge);
             this.Controls.Add(this.label_UngeparkteFahrzeuge);
@@ -289,6 +322,7 @@ namespace DieGarage
             ((System.ComponentModel.ISupportInitialize)(this.ParkplaetzePerDeck)).EndInit();
             this.panel_Konfiguration.ResumeLayout(false);
             this.panel_Konfiguration.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FahrzeugeInWelt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,6 +348,8 @@ namespace DieGarage
         private System.Windows.Forms.Label label_UngeparkteFahrzeuge;
         private System.Windows.Forms.Label label_GeparkteFahrzeuge;
         private System.Windows.Forms.Button Button_CheckCar;
+        private System.Windows.Forms.NumericUpDown FahrzeugeInWelt;
+        private System.Windows.Forms.Label label_FahrzeugeInWelt;
     }
 }
 
