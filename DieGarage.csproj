@@ -55,6 +55,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Garage.cs" />
+    <Compile Include="Scripts\HelperFunctions.cs" />
     <Compile Include="Scripts\Parkplatz.cs" />
     <Compile Include="Scripts\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

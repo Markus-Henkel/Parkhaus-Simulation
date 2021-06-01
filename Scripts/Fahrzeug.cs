@@ -15,7 +15,11 @@ namespace DieGarage
         }
         string CreateKennzeichen(int _id)
         {
-            string s = "12345";
+            var rnd = new Random(_id);
+            var amountOfLetters = rnd.Next(2, 5);
+            var amountOfNumbers = rnd.Next(1, 5);
+            string s = HelperFunctions.RandomLetters(amountOfLetters, _id) + "-" +
+                HelperFunctions.RandomNumbers(amountOfNumbers,_id);
             return s;
         }
     }
