@@ -24,7 +24,6 @@ namespace DieGarage
                 var parkplatz = new Parkplatz();
                 var a = (double)i / (double)parkstellenProDeck;
                 parkplatz.etage = (int)a;
-                 //   (int)Math.Ceiling(a);
                 parkstellen.Add(parkplatz);
             }
         }
