@@ -13,8 +13,7 @@ namespace DieGarage
             ungeparkteFahrzeuge = new List<Fahrzeug>();
             for (int i = 0; i < garage.kapazität; i++)
             {
-                var fahrzeug = new Fahrzeug(i);
-                ungeparkteFahrzeuge.Add(fahrzeug);
+                ungeparkteFahrzeuge.Add(new Fahrzeug(i));
             }
         }
     }
