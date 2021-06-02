@@ -13,7 +13,6 @@ namespace DieGarage
     public partial class Form1 : Form
     {
         public Welt welt;
-        public Einstellungen einstellungen;
         public Form1()
         {
             InitializeComponent();
@@ -21,8 +20,15 @@ namespace DieGarage
 
         private void Button_WeltGenerieren_Click(object sender, EventArgs e)
         {
-            einstellungen = new Einstellungen((int)Decks.Value, (int)ParkplaetzePerDeck.Value,(int)FahrzeugeInWelt.Value);
-            welt = new Welt(einstellungen);
+            welt = new Welt((int)Decks.Value, (int)ParkplaetzePerDeck.Value, (int)FahrzeugeInWelt.Value)
+            {
+                etagen = (int)Decks.Value,
+                parkstellenProEtage = (int)ParkplaetzePerDeck.Value,
+                fahrzeugeInWelt = (int)FahrzeugeInWelt.Value,
+                parkdauer = TrackBar_Parkdauer.Value,
+                parkversucheProStunde = TrackBar_ParkversucheProStunde.Value
+            };
+            TrackBar_Speed.Value = 1;
             UpdateGUI();
             label_Info.Text = string.Empty;
             Timer.Start();
@@ -30,7 +36,7 @@ namespace DieGarage
 
         private void Button_Befahren_Click(object sender, EventArgs e)
         {
-            if(welt is null)
+            if (welt is null)
             {
                 label_Info.Text = "Keine Simulation gestartet!";
                 return;
@@ -41,25 +47,7 @@ namespace DieGarage
                 label_Info.Text = "Keine Fahrzeuge zum parken!";
                 return;
             }
-            if (welt.garage.freiePlaetze == 0)
-            {
-                label_Info.Text = "Kein freier Platz!";
-                return;
-            }
-
-            for (int i = 0; i < welt.garage.kapazität; i++)
-            {
-                if (welt.garage.parkstellen[i].fahrzeug == null)
-                {
-                    welt.garage.parkstellen[i].fahrzeug = welt.ungeparkteFahrzeuge[0];
-                    welt.ungeparkteFahrzeuge.RemoveAt(0);
-                    break;
-                }
-            }
-            welt.garage.freiePlaetze--;
-            welt.garage.vergebenePlaetze++;
-
-            UpdateGUI();
+            ParkCar();
         }
 
         private void Button_Verlassen_Click(object sender, EventArgs e)
@@ -86,11 +74,40 @@ namespace DieGarage
                 label_Info.Text = "Kein Auto im Parkhaus!";
                 return;
             }
+            ExitCarFromGarage(chosenCar);
 
-            welt.ungeparkteFahrzeuge.Add(welt.garage.parkstellen[chosenCar].fahrzeug);
-            welt.garage.parkstellen[chosenCar].fahrzeug = null;
+        }
+        private void ExitCarFromGarage(int index)
+        {
+            welt.ungeparkteFahrzeuge.Add(welt.garage.parkstellen[index].fahrzeug);
+            welt.garage.parkstellen[index].fahrzeug = null;
             welt.garage.freiePlaetze++;
             welt.garage.vergebenePlaetze--;
+
+            UpdateGUI();
+        }
+        private void ParkCar()
+        {
+            if (welt.garage.freiePlaetze == 0)
+            {
+                label_Info.Text = "Kein freier Platz!";
+                return;
+            }
+
+            for (int i = 0; i < welt.garage.kapazität; i++)
+            {
+                if (welt.garage.parkstellen[i].fahrzeug == null)
+                {
+                    welt.garage.parkstellen[i].fahrzeug = welt.ungeparkteFahrzeuge[0];
+                    welt.garage.parkstellen[i].fahrzeug.parkEndZeit = welt.time + welt.parkdauer;
+                    label_Info.Text = "Endparkzeit gesetzt auf: "
+                        + TimeSpan.FromSeconds(welt.garage.parkstellen[i].fahrzeug.parkEndZeit);
+                    welt.ungeparkteFahrzeuge.RemoveAt(0);
+                    break;
+                }
+            }
+            welt.garage.freiePlaetze--;
+            welt.garage.vergebenePlaetze++;
 
             UpdateGUI();
         }
@@ -118,7 +135,7 @@ namespace DieGarage
         private void Button_CheckCar_Click(object sender, EventArgs e)
         {
             var id = Geparkte_Fahrzeuge.SelectedIndex;
-            if(id == -1)
+            if (id == -1)
             {
                 label_Info.Text = "Kein geparktes Fahrzeug ausgewählt!";
                 return;
@@ -138,9 +155,20 @@ namespace DieGarage
         private void Timer_Tick(object sender, EventArgs e)
         {
             if (welt is null) return;
-            welt.time += 0.1d * welt.speed;
+            welt.time += 1 * welt.speed;
             welt.time = Math.Round(welt.time, 1);
-            label_VergangeneZeit.Text = welt.time.ToString();
+            label_VergangeneZeit.Text = TimeSpan.FromSeconds(welt.time).ToString();
+
+            for (int i = 0; i < welt.garage.parkstellen.Count; i++)
+            {
+                if (welt.garage.parkstellen[i].fahrzeug != null)
+                {
+                    if (welt.garage.parkstellen[i].fahrzeug.parkEndZeit <= welt.time)
+                    {
+                        ExitCarFromGarage(i);
+                    }
+                }
+            }
         }
 
         private void Button_StartTime_Click(object sender, EventArgs e)
@@ -157,7 +185,22 @@ namespace DieGarage
 
         private void TrackBar_Speed_Scroll(object sender, EventArgs e)
         {
+            if (welt is null) return;
             welt.speed = TrackBar_Speed.Value;
+        }
+
+        private void TrackBar_ParkversucheProStunde_Scroll(object sender, EventArgs e)
+        {
+            if (welt is null) return;
+            welt.parkversucheProStunde = TrackBar_ParkversucheProStunde.Value;
+
+        }
+
+        private void TrackBar_Parkdauer_Scroll(object sender, EventArgs e)
+        {
+            if (welt is null) return;
+            welt.parkdauer = TrackBar_Parkdauer.Value;
+            label_Parkdauer.Text = TimeSpan.FromSeconds(welt.parkdauer).ToString();
         }
     }
 }

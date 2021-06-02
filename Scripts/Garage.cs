@@ -11,10 +11,10 @@ namespace DieGarage
         public int freiePlaetze;
         public int vergebenePlaetze;
 
-        public Garage(Einstellungen _einstellungen)
+        public Garage(int _decks,int _parkstellenProDeck)
         {
-            decks = _einstellungen.etage;
-            parkstellenProDeck = _einstellungen.parkstellenProEtage;
+            decks = _decks;
+            parkstellenProDeck = _parkstellenProDeck;
             kapazität = decks * parkstellenProDeck;
             freiePlaetze = kapazität;
             vergebenePlaetze = 0;

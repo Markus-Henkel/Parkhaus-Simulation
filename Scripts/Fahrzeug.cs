@@ -7,6 +7,7 @@ namespace DieGarage
     {
         public Fahrzeugart fahrzeugart;
         public string kennzeichen;
+        public double parkEndZeit;
         public Fahrzeug(int _id)
         {
             var rnd = new Random(_id);

@@ -55,15 +55,22 @@ namespace DieGarage
             this.Button_Exit = new System.Windows.Forms.Button();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.label_VergangeneZeit = new System.Windows.Forms.Label();
-            this.Button_StartTime = new System.Windows.Forms.Button();
-            this.Button_StopTime = new System.Windows.Forms.Button();
             this.TrackBar_Speed = new System.Windows.Forms.TrackBar();
             this.label_VergangeneZeitInfo = new System.Windows.Forms.Label();
+            this.TrackBar_ParkversucheProStunde = new System.Windows.Forms.TrackBar();
+            this.label_VerkehrsInfo = new System.Windows.Forms.Label();
+            this.label_Parkversuche = new System.Windows.Forms.Label();
+            this.label_Parkdauer = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TrackBar_Parkdauer = new System.Windows.Forms.TrackBar();
+            this.label_Speed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Decks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParkplaetzePerDeck)).BeginInit();
             this.panel_Konfiguration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FahrzeugeInWelt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Speed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_ParkversucheProStunde)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Parkdauer)).BeginInit();
             this.SuspendLayout();
             // 
             // Decks
@@ -150,7 +157,7 @@ namespace DieGarage
             // 
             // panel_Konfiguration
             // 
-            this.panel_Konfiguration.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel_Konfiguration.BackColor = System.Drawing.Color.Gray;
             this.panel_Konfiguration.Controls.Add(this.FahrzeugeInWelt);
             this.panel_Konfiguration.Controls.Add(this.label_FahrzeugeInWelt);
             this.panel_Konfiguration.Controls.Add(this.label_PlaetzeInsgesamt);
@@ -205,19 +212,20 @@ namespace DieGarage
             // ProgressBar_Auslastung
             // 
             this.ProgressBar_Auslastung.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ProgressBar_Auslastung.Location = new System.Drawing.Point(15, 572);
+            this.ProgressBar_Auslastung.Location = new System.Drawing.Point(633, 462);
             this.ProgressBar_Auslastung.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProgressBar_Auslastung.Name = "ProgressBar_Auslastung";
-            this.ProgressBar_Auslastung.Size = new System.Drawing.Size(547, 11);
+            this.ProgressBar_Auslastung.Size = new System.Drawing.Size(547, 55);
             this.ProgressBar_Auslastung.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.ProgressBar_Auslastung.TabIndex = 7;
             // 
             // Auslastung
             // 
             this.Auslastung.AutoSize = true;
-            this.Auslastung.Location = new System.Drawing.Point(25, 553);
+            this.Auslastung.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Auslastung.Location = new System.Drawing.Point(860, 475);
             this.Auslastung.Name = "Auslastung";
-            this.Auslastung.Size = new System.Drawing.Size(30, 13);
+            this.Auslastung.Size = new System.Drawing.Size(66, 31);
             this.Auslastung.TabIndex = 8;
             this.Auslastung.Text = "0 / 0";
             this.Auslastung.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -225,15 +233,16 @@ namespace DieGarage
             // label_Auslastung
             // 
             this.label_Auslastung.AutoSize = true;
-            this.label_Auslastung.Location = new System.Drawing.Point(13, 537);
+            this.label_Auslastung.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Auslastung.Location = new System.Drawing.Point(633, 425);
             this.label_Auslastung.Name = "label_Auslastung";
-            this.label_Auslastung.Size = new System.Drawing.Size(59, 13);
+            this.label_Auslastung.Size = new System.Drawing.Size(149, 31);
             this.label_Auslastung.TabIndex = 9;
             this.label_Auslastung.Text = "Auslastung";
             // 
             // Button_Befahren
             // 
-            this.Button_Befahren.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Button_Befahren.BackColor = System.Drawing.Color.Gray;
             this.Button_Befahren.FlatAppearance.BorderSize = 0;
             this.Button_Befahren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Befahren.Location = new System.Drawing.Point(255, 118);
@@ -247,7 +256,7 @@ namespace DieGarage
             // 
             // Button_Verlassen
             // 
-            this.Button_Verlassen.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Button_Verlassen.BackColor = System.Drawing.Color.Gray;
             this.Button_Verlassen.FlatAppearance.BorderSize = 0;
             this.Button_Verlassen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Verlassen.Location = new System.Drawing.Point(244, 450);
@@ -261,7 +270,7 @@ namespace DieGarage
             // 
             // Geparkte_Fahrzeuge
             // 
-            this.Geparkte_Fahrzeuge.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Geparkte_Fahrzeuge.BackColor = System.Drawing.Color.Gray;
             this.Geparkte_Fahrzeuge.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Geparkte_Fahrzeuge.ForeColor = System.Drawing.SystemColors.Window;
             this.Geparkte_Fahrzeuge.FormattingEnabled = true;
@@ -273,7 +282,7 @@ namespace DieGarage
             // 
             // Ungeparkte_Fahrzeuge
             // 
-            this.Ungeparkte_Fahrzeuge.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Ungeparkte_Fahrzeuge.BackColor = System.Drawing.Color.Gray;
             this.Ungeparkte_Fahrzeuge.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Ungeparkte_Fahrzeuge.ForeColor = System.Drawing.SystemColors.Window;
             this.Ungeparkte_Fahrzeuge.FormattingEnabled = true;
@@ -285,38 +294,42 @@ namespace DieGarage
             // 
             // label_Info
             // 
-            this.label_Info.Location = new System.Drawing.Point(187, 168);
+            this.label_Info.Location = new System.Drawing.Point(187, 213);
             this.label_Info.Name = "label_Info";
-            this.label_Info.Size = new System.Drawing.Size(208, 102);
+            this.label_Info.Size = new System.Drawing.Size(208, 162);
             this.label_Info.TabIndex = 14;
             // 
             // label_UngeparkteFahrzeuge
             // 
             this.label_UngeparkteFahrzeuge.AutoSize = true;
-            this.label_UngeparkteFahrzeuge.Location = new System.Drawing.Point(425, 100);
+            this.label_UngeparkteFahrzeuge.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_UngeparkteFahrzeuge.Location = new System.Drawing.Point(411, 85);
             this.label_UngeparkteFahrzeuge.Name = "label_UngeparkteFahrzeuge";
-            this.label_UngeparkteFahrzeuge.Size = new System.Drawing.Size(116, 13);
+            this.label_UngeparkteFahrzeuge.Size = new System.Drawing.Size(138, 29);
             this.label_UngeparkteFahrzeuge.TabIndex = 15;
-            this.label_UngeparkteFahrzeuge.Text = "Ungeparkte Fahrzeuge";
+            this.label_UngeparkteFahrzeuge.Text = "Ungeparkte";
+            this.label_UngeparkteFahrzeuge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_GeparkteFahrzeuge
             // 
             this.label_GeparkteFahrzeuge.AutoSize = true;
-            this.label_GeparkteFahrzeuge.Location = new System.Drawing.Point(38, 100);
+            this.label_GeparkteFahrzeuge.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_GeparkteFahrzeuge.Location = new System.Drawing.Point(41, 85);
             this.label_GeparkteFahrzeuge.Name = "label_GeparkteFahrzeuge";
-            this.label_GeparkteFahrzeuge.Size = new System.Drawing.Size(104, 13);
+            this.label_GeparkteFahrzeuge.Size = new System.Drawing.Size(112, 29);
             this.label_GeparkteFahrzeuge.TabIndex = 16;
-            this.label_GeparkteFahrzeuge.Text = "Geparkte Fahrzeuge";
+            this.label_GeparkteFahrzeuge.Text = "Geparkte";
+            this.label_GeparkteFahrzeuge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Button_CheckCar
             // 
-            this.Button_CheckCar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Button_CheckCar.BackColor = System.Drawing.Color.Gray;
             this.Button_CheckCar.FlatAppearance.BorderSize = 0;
             this.Button_CheckCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_CheckCar.Location = new System.Drawing.Point(235, 274);
+            this.Button_CheckCar.Location = new System.Drawing.Point(15, 477);
             this.Button_CheckCar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_CheckCar.Name = "Button_CheckCar";
-            this.Button_CheckCar.Size = new System.Drawing.Size(117, 40);
+            this.Button_CheckCar.Size = new System.Drawing.Size(161, 40);
             this.Button_CheckCar.TabIndex = 17;
             this.Button_CheckCar.Text = "Wo ist das Fahrzeug?";
             this.Button_CheckCar.UseVisualStyleBackColor = false;
@@ -344,7 +357,7 @@ namespace DieGarage
             // 
             this.Button_Exit.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Button_Exit.ForeColor = System.Drawing.Color.Black;
-            this.Button_Exit.Location = new System.Drawing.Point(558, 2);
+            this.Button_Exit.Location = new System.Drawing.Point(1185, 8);
             this.Button_Exit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Exit.Name = "Button_Exit";
             this.Button_Exit.Size = new System.Drawing.Size(17, 17);
@@ -355,77 +368,123 @@ namespace DieGarage
             // 
             // Timer
             // 
+            this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // label_VergangeneZeit
             // 
             this.label_VergangeneZeit.AutoSize = true;
-            this.label_VergangeneZeit.Location = new System.Drawing.Point(265, 502);
+            this.label_VergangeneZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_VergangeneZeit.Location = new System.Drawing.Point(833, 171);
             this.label_VergangeneZeit.Name = "label_VergangeneZeit";
-            this.label_VergangeneZeit.Size = new System.Drawing.Size(49, 13);
+            this.label_VergangeneZeit.Size = new System.Drawing.Size(103, 29);
             this.label_VergangeneZeit.TabIndex = 21;
             this.label_VergangeneZeit.Text = "00:00:00";
             this.label_VergangeneZeit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Button_StartTime
-            // 
-            this.Button_StartTime.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Button_StartTime.FlatAppearance.BorderSize = 0;
-            this.Button_StartTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_StartTime.Location = new System.Drawing.Point(101, 492);
-            this.Button_StartTime.Name = "Button_StartTime";
-            this.Button_StartTime.Size = new System.Drawing.Size(75, 23);
-            this.Button_StartTime.TabIndex = 22;
-            this.Button_StartTime.Text = "START";
-            this.Button_StartTime.UseVisualStyleBackColor = false;
-            this.Button_StartTime.Click += new System.EventHandler(this.Button_StartTime_Click);
-            // 
-            // Button_StopTime
-            // 
-            this.Button_StopTime.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Button_StopTime.FlatAppearance.BorderSize = 0;
-            this.Button_StopTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_StopTime.Location = new System.Drawing.Point(401, 492);
-            this.Button_StopTime.Name = "Button_StopTime";
-            this.Button_StopTime.Size = new System.Drawing.Size(75, 23);
-            this.Button_StopTime.TabIndex = 23;
-            this.Button_StopTime.Text = "STOP";
-            this.Button_StopTime.UseVisualStyleBackColor = false;
-            this.Button_StopTime.Click += new System.EventHandler(this.Button_StopTime_Click);
-            // 
             // TrackBar_Speed
             // 
-            this.TrackBar_Speed.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TrackBar_Speed.Location = new System.Drawing.Point(187, 520);
+            this.TrackBar_Speed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TrackBar_Speed.Location = new System.Drawing.Point(646, 205);
             this.TrackBar_Speed.Maximum = 100;
-            this.TrackBar_Speed.Minimum = 1;
             this.TrackBar_Speed.Name = "TrackBar_Speed";
-            this.TrackBar_Speed.Size = new System.Drawing.Size(213, 45);
+            this.TrackBar_Speed.Size = new System.Drawing.Size(534, 45);
             this.TrackBar_Speed.TabIndex = 24;
-            this.TrackBar_Speed.TickStyle = System.Windows.Forms.TickStyle.None;
             this.TrackBar_Speed.Value = 1;
             this.TrackBar_Speed.Scroll += new System.EventHandler(this.TrackBar_Speed_Scroll);
             // 
             // label_VergangeneZeitInfo
             // 
             this.label_VergangeneZeitInfo.AutoSize = true;
-            this.label_VergangeneZeitInfo.Location = new System.Drawing.Point(248, 484);
+            this.label_VergangeneZeitInfo.Location = new System.Drawing.Point(838, 145);
             this.label_VergangeneZeitInfo.Name = "label_VergangeneZeitInfo";
             this.label_VergangeneZeitInfo.Size = new System.Drawing.Size(86, 13);
             this.label_VergangeneZeitInfo.TabIndex = 25;
             this.label_VergangeneZeitInfo.Text = "Vergangene Zeit";
             this.label_VergangeneZeitInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // TrackBar_ParkversucheProStunde
+            // 
+            this.TrackBar_ParkversucheProStunde.Location = new System.Drawing.Point(634, 37);
+            this.TrackBar_ParkversucheProStunde.Maximum = 100;
+            this.TrackBar_ParkversucheProStunde.Name = "TrackBar_ParkversucheProStunde";
+            this.TrackBar_ParkversucheProStunde.Size = new System.Drawing.Size(546, 45);
+            this.TrackBar_ParkversucheProStunde.TabIndex = 26;
+            this.TrackBar_ParkversucheProStunde.Value = 60;
+            this.TrackBar_ParkversucheProStunde.Scroll += new System.EventHandler(this.TrackBar_ParkversucheProStunde_Scroll);
+            // 
+            // label_VerkehrsInfo
+            // 
+            this.label_VerkehrsInfo.AutoSize = true;
+            this.label_VerkehrsInfo.Location = new System.Drawing.Point(654, 26);
+            this.label_VerkehrsInfo.Name = "label_VerkehrsInfo";
+            this.label_VerkehrsInfo.Size = new System.Drawing.Size(128, 13);
+            this.label_VerkehrsInfo.TabIndex = 28;
+            this.label_VerkehrsInfo.Text = "Parkversuche pro Stunde";
+            // 
+            // label_Parkversuche
+            // 
+            this.label_Parkversuche.AutoSize = true;
+            this.label_Parkversuche.Location = new System.Drawing.Point(867, 26);
+            this.label_Parkversuche.Name = "label_Parkversuche";
+            this.label_Parkversuche.Size = new System.Drawing.Size(19, 13);
+            this.label_Parkversuche.TabIndex = 29;
+            this.label_Parkversuche.Text = "60";
+            // 
+            // label_Parkdauer
+            // 
+            this.label_Parkdauer.AutoSize = true;
+            this.label_Parkdauer.Location = new System.Drawing.Point(855, 84);
+            this.label_Parkdauer.Name = "label_Parkdauer";
+            this.label_Parkdauer.Size = new System.Drawing.Size(49, 13);
+            this.label_Parkdauer.TabIndex = 32;
+            this.label_Parkdauer.Text = "01:00:00";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(654, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Parkdauer";
+            // 
+            // TrackBar_Parkdauer
+            // 
+            this.TrackBar_Parkdauer.Location = new System.Drawing.Point(634, 95);
+            this.TrackBar_Parkdauer.Maximum = 20000;
+            this.TrackBar_Parkdauer.Name = "TrackBar_Parkdauer";
+            this.TrackBar_Parkdauer.Size = new System.Drawing.Size(546, 45);
+            this.TrackBar_Parkdauer.TabIndex = 30;
+            this.TrackBar_Parkdauer.TickFrequency = 250;
+            this.TrackBar_Parkdauer.Value = 3600;
+            this.TrackBar_Parkdauer.Scroll += new System.EventHandler(this.TrackBar_Parkdauer_Scroll);
+            // 
+            // label_Speed
+            // 
+            this.label_Speed.AutoSize = true;
+            this.label_Speed.Location = new System.Drawing.Point(654, 191);
+            this.label_Speed.Name = "label_Speed";
+            this.label_Speed.Size = new System.Drawing.Size(49, 13);
+            this.label_Speed.TabIndex = 33;
+            this.label_Speed.Text = "Zeitraffer";
+            this.label_Speed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(577, 596);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(1209, 528);
+            this.Controls.Add(this.label_Speed);
+            this.Controls.Add(this.label_Parkdauer);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TrackBar_Parkdauer);
+            this.Controls.Add(this.label_Parkversuche);
+            this.Controls.Add(this.label_VerkehrsInfo);
+            this.Controls.Add(this.TrackBar_ParkversucheProStunde);
             this.Controls.Add(this.label_VergangeneZeitInfo);
             this.Controls.Add(this.TrackBar_Speed);
-            this.Controls.Add(this.Button_StopTime);
-            this.Controls.Add(this.Button_StartTime);
             this.Controls.Add(this.label_VergangeneZeit);
             this.Controls.Add(this.Button_Exit);
             this.Controls.Add(this.label1);
@@ -454,6 +513,8 @@ namespace DieGarage
             this.panel_Konfiguration.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FahrzeugeInWelt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Speed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_ParkversucheProStunde)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Parkdauer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,10 +547,15 @@ namespace DieGarage
         private System.Windows.Forms.Button Button_Exit;
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.Label label_VergangeneZeit;
-        private System.Windows.Forms.Button Button_StartTime;
-        private System.Windows.Forms.Button Button_StopTime;
         private System.Windows.Forms.TrackBar TrackBar_Speed;
         private System.Windows.Forms.Label label_VergangeneZeitInfo;
+        private System.Windows.Forms.TrackBar TrackBar_ParkversucheProStunde;
+        private System.Windows.Forms.Label label_VerkehrsInfo;
+        private System.Windows.Forms.Label label_Parkversuche;
+        private System.Windows.Forms.Label label_Parkdauer;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TrackBar TrackBar_Parkdauer;
+        private System.Windows.Forms.Label label_Speed;
     }
 }
 

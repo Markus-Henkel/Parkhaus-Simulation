@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Scripts\Einstellungen.cs" />
     <Compile Include="Scripts\Fahrzeug.cs" />
     <Compile Include="Scripts\Form1.cs">
       <SubType>Form</SubType>
