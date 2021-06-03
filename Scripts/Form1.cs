@@ -135,7 +135,7 @@ namespace DieGarage
 
         private void Button_CheckCar_Click(object sender, EventArgs e)
         {
-            var id = Geparkte_Fahrzeuge.SelectedIndex;
+            var id = Geparkte_Fahrzeuge.SelectedIndex;            
             var searchedNumberPlate = TextBox_NumberPlate.Text;
             if (id == -1 && searchedNumberPlate == "")
             {
@@ -144,16 +144,23 @@ namespace DieGarage
             }
             if(searchedNumberPlate != string.Empty)
             {
+                var searchId = -1;
                 for (int i = 0; i < welt.garage.parkingPlaces.Count; i++)
                 {
                     if(welt.garage.parkingPlaces[i].vehicle != null)
                     {
                         if(welt.garage.parkingPlaces[i].vehicle.numberPlate == searchedNumberPlate)
                         {
-                            id = i;
+                            searchId = i;
                         }
                     }
                 }
+                if(searchId == -1)
+                {
+                    label_Info.Text = "Kennzeichen nicht in Parkhaus gefunden!";
+                    return;
+                }
+                id = searchId;
             }
 
             var deck = welt.garage.parkingPlaces[id].deck;

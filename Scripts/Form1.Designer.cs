@@ -261,7 +261,7 @@ namespace DieGarage
             this.Button_Verlassen.BackColor = System.Drawing.Color.Gray;
             this.Button_Verlassen.FlatAppearance.BorderSize = 0;
             this.Button_Verlassen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Verlassen.Location = new System.Drawing.Point(244, 450);
+            this.Button_Verlassen.Location = new System.Drawing.Point(248, 178);
             this.Button_Verlassen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Verlassen.Name = "Button_Verlassen";
             this.Button_Verlassen.Size = new System.Drawing.Size(86, 22);
@@ -293,10 +293,13 @@ namespace DieGarage
             this.Ungeparkte_Fahrzeuge.Name = "Ungeparkte_Fahrzeuge";
             this.Ungeparkte_Fahrzeuge.Size = new System.Drawing.Size(161, 351);
             this.Ungeparkte_Fahrzeuge.TabIndex = 13;
+            this.Ungeparkte_Fahrzeuge.Visible = false;
             // 
             // label_Info
             // 
-            this.label_Info.Location = new System.Drawing.Point(187, 213);
+            this.label_Info.BackColor = System.Drawing.Color.DimGray;
+            this.label_Info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label_Info.Location = new System.Drawing.Point(187, 212);
             this.label_Info.Name = "label_Info";
             this.label_Info.Size = new System.Drawing.Size(208, 162);
             this.label_Info.TabIndex = 14;
@@ -311,6 +314,7 @@ namespace DieGarage
             this.label_UngeparkteFahrzeuge.TabIndex = 15;
             this.label_UngeparkteFahrzeuge.Text = "Ungeparkte";
             this.label_UngeparkteFahrzeuge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_UngeparkteFahrzeuge.Visible = false;
             // 
             // label_GeparkteFahrzeuge
             // 
@@ -340,20 +344,20 @@ namespace DieGarage
             // label_arrow_left
             // 
             this.label_arrow_left.AutoSize = true;
-            this.label_arrow_left.Location = new System.Drawing.Point(198, 144);
+            this.label_arrow_left.Location = new System.Drawing.Point(260, 144);
             this.label_arrow_left.Name = "label_arrow_left";
-            this.label_arrow_left.Size = new System.Drawing.Size(133, 13);
+            this.label_arrow_left.Size = new System.Drawing.Size(61, 13);
             this.label_arrow_left.TabIndex = 18;
-            this.label_arrow_left.Text = "<-<-<-<-<-<-------------------------";
+            this.label_arrow_left.Text = "<-<-<-<-<-<-";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(242, 434);
+            this.label1.Location = new System.Drawing.Point(263, 162);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 19;
-            this.label1.Text = "--------------------------->->->->->";
+            this.label1.Text = "->->->->->";
             // 
             // Button_Exit
             // 
@@ -376,7 +380,7 @@ namespace DieGarage
             // 
             this.label_VergangeneZeit.AutoSize = true;
             this.label_VergangeneZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_VergangeneZeit.Location = new System.Drawing.Point(833, 171);
+            this.label_VergangeneZeit.Location = new System.Drawing.Point(842, 224);
             this.label_VergangeneZeit.Name = "label_VergangeneZeit";
             this.label_VergangeneZeit.Size = new System.Drawing.Size(103, 29);
             this.label_VergangeneZeit.TabIndex = 21;
@@ -386,7 +390,7 @@ namespace DieGarage
             // TrackBar_Speed
             // 
             this.TrackBar_Speed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TrackBar_Speed.Location = new System.Drawing.Point(646, 205);
+            this.TrackBar_Speed.Location = new System.Drawing.Point(646, 157);
             this.TrackBar_Speed.Maximum = 100;
             this.TrackBar_Speed.Name = "TrackBar_Speed";
             this.TrackBar_Speed.Size = new System.Drawing.Size(534, 45);
@@ -397,7 +401,7 @@ namespace DieGarage
             // label_VergangeneZeitInfo
             // 
             this.label_VergangeneZeitInfo.AutoSize = true;
-            this.label_VergangeneZeitInfo.Location = new System.Drawing.Point(838, 145);
+            this.label_VergangeneZeitInfo.Location = new System.Drawing.Point(849, 198);
             this.label_VergangeneZeitInfo.Name = "label_VergangeneZeitInfo";
             this.label_VergangeneZeitInfo.Size = new System.Drawing.Size(86, 13);
             this.label_VergangeneZeitInfo.TabIndex = 25;
@@ -464,7 +468,7 @@ namespace DieGarage
             // label_Speed
             // 
             this.label_Speed.AutoSize = true;
-            this.label_Speed.Location = new System.Drawing.Point(654, 191);
+            this.label_Speed.Location = new System.Drawing.Point(654, 143);
             this.label_Speed.Name = "label_Speed";
             this.label_Speed.Size = new System.Drawing.Size(49, 13);
             this.label_Speed.TabIndex = 33;
