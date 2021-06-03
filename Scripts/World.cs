@@ -8,19 +8,19 @@ namespace DieGarage
         public double speed = 1;
         public double timeBetweenParkingTries;
         public double parktime;
-        public ParkingLot garage;
+        public Garage garage;
         public List<Vehicle> freeroamingCars;
         public int decks;
         public int placesPerDeck;
         public int amountOfCars;
         public double lastTimeCarParked;
 
-        public World(int _decks, int _parkstellenPerDeck, int _fahrzeugeInWelt)
+        public World(int _decks, int _placesPerDeck, int _amountOfCars)
         {
-            garage = new ParkingLot(_decks, _parkstellenPerDeck);
+            garage = new Garage(_decks, _placesPerDeck);
             freeroamingCars = new List<Vehicle>();
             var seedAdd = 0;
-            for (int i = 0; i < _fahrzeugeInWelt; i++)
+            for (int i = 0; i < _amountOfCars; i++)
             {
                 var car = new Vehicle(i);
                 var numberPlate = car.numberPlate;

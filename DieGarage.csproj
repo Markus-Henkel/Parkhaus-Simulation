@@ -53,7 +53,7 @@
     <Compile Include="Scripts\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scripts\ParkingLot.cs" />
+    <Compile Include="Scripts\Garage.cs" />
     <Compile Include="Scripts\HelperFunctions.cs" />
     <Compile Include="Scripts\ParkingPlace.cs" />
     <Compile Include="Scripts\Program.cs" />

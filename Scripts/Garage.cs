@@ -2,7 +2,7 @@
 
 namespace DieGarage
 {
-    public class ParkingLot
+    public class Garage
     {
         public List<ParkingPlace> parkingPlaces;
         public int decks;
@@ -11,7 +11,7 @@ namespace DieGarage
         public int freePlaces;
         public int occupiedPlaces;
 
-        public ParkingLot(int _decks,int _placesPerDeck)
+        public Garage(int _decks,int _placesPerDeck)
         {
             decks = _decks;
             placesPerDeck = _placesPerDeck;
