@@ -5,7 +5,7 @@ namespace DieGarage
 {
     public static class HelperFunctions
     {
-        public static string CreateKennzeichen(int _id)
+        public static string CreateNumberPlate(int _id)
         {
             var rnd = new Random(_id);
             var amountOfLetters = rnd.Next(2, 5);

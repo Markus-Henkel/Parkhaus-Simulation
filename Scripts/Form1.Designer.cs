@@ -64,6 +64,8 @@ namespace DieGarage
             this.label3 = new System.Windows.Forms.Label();
             this.TrackBar_Parkdauer = new System.Windows.Forms.TrackBar();
             this.label_Speed = new System.Windows.Forms.Label();
+            this.TextBox_NumberPlate = new System.Windows.Forms.TextBox();
+            this.label_KennzeichenSucheInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Decks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParkplaetzePerDeck)).BeginInit();
             this.panel_Konfiguration.SuspendLayout();
@@ -93,7 +95,7 @@ namespace DieGarage
             this.Decks.Size = new System.Drawing.Size(120, 20);
             this.Decks.TabIndex = 0;
             this.Decks.Value = new decimal(new int[] {
-            3,
+            8,
             0,
             0,
             0});
@@ -118,7 +120,7 @@ namespace DieGarage
             this.ParkplaetzePerDeck.Size = new System.Drawing.Size(120, 20);
             this.ParkplaetzePerDeck.TabIndex = 1;
             this.ParkplaetzePerDeck.Value = new decimal(new int[] {
-            3,
+            20,
             0,
             0,
             0});
@@ -187,7 +189,7 @@ namespace DieGarage
             this.FahrzeugeInWelt.Size = new System.Drawing.Size(120, 20);
             this.FahrzeugeInWelt.TabIndex = 7;
             this.FahrzeugeInWelt.Value = new decimal(new int[] {
-            9,
+            200,
             0,
             0,
             0});
@@ -368,7 +370,6 @@ namespace DieGarage
             // 
             // Timer
             // 
-            this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // label_VergangeneZeit
@@ -470,12 +471,30 @@ namespace DieGarage
             this.label_Speed.Text = "Zeitraffer";
             this.label_Speed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // TextBox_NumberPlate
+            // 
+            this.TextBox_NumberPlate.Location = new System.Drawing.Point(199, 497);
+            this.TextBox_NumberPlate.Name = "TextBox_NumberPlate";
+            this.TextBox_NumberPlate.Size = new System.Drawing.Size(178, 20);
+            this.TextBox_NumberPlate.TabIndex = 34;
+            // 
+            // label_KennzeichenSucheInfo
+            // 
+            this.label_KennzeichenSucheInfo.AutoSize = true;
+            this.label_KennzeichenSucheInfo.Location = new System.Drawing.Point(198, 481);
+            this.label_KennzeichenSucheInfo.Name = "label_KennzeichenSucheInfo";
+            this.label_KennzeichenSucheInfo.Size = new System.Drawing.Size(106, 13);
+            this.label_KennzeichenSucheInfo.TabIndex = 35;
+            this.label_KennzeichenSucheInfo.Text = "Suche Kennzeichen:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1209, 528);
+            this.Controls.Add(this.label_KennzeichenSucheInfo);
+            this.Controls.Add(this.TextBox_NumberPlate);
             this.Controls.Add(this.label_Speed);
             this.Controls.Add(this.label_Parkdauer);
             this.Controls.Add(this.label3);
@@ -556,6 +575,8 @@ namespace DieGarage
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TrackBar TrackBar_Parkdauer;
         private System.Windows.Forms.Label label_Speed;
+        private System.Windows.Forms.TextBox TextBox_NumberPlate;
+        private System.Windows.Forms.Label label_KennzeichenSucheInfo;
     }
 }
 

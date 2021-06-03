@@ -12,7 +12,7 @@ namespace DieGarage
 {
     public partial class Form1 : Form
     {
-        public Welt welt;
+        public World welt;
         public Form1()
         {
             InitializeComponent();
@@ -20,13 +20,13 @@ namespace DieGarage
 
         private void Button_WeltGenerieren_Click(object sender, EventArgs e)
         {
-            welt = new Welt((int)Decks.Value, (int)ParkplaetzePerDeck.Value, (int)FahrzeugeInWelt.Value)
+            welt = new World((int)Decks.Value, (int)ParkplaetzePerDeck.Value, (int)FahrzeugeInWelt.Value)
             {
-                etagen = (int)Decks.Value,
-                parkstellenProEtage = (int)ParkplaetzePerDeck.Value,
-                fahrzeugeInWelt = (int)FahrzeugeInWelt.Value,
-                parkdauer = TrackBar_Parkdauer.Value,
-                parkversucheProStunde = TrackBar_ParkversucheProStunde.Value
+                decks = (int)Decks.Value,
+                placesPerDeck = (int)ParkplaetzePerDeck.Value,
+                amountOfCars = (int)FahrzeugeInWelt.Value,
+                parktime = TrackBar_Parkdauer.Value,
+                timeBetweenParkingTries = 3600 / TrackBar_ParkversucheProStunde.Value
             };
             TrackBar_Speed.Value = 1;
             UpdateGUI();
@@ -42,7 +42,7 @@ namespace DieGarage
                 return;
             }
             label_Info.Text = string.Empty;
-            if (welt.ungeparkteFahrzeuge.Count == 0)
+            if (welt.freeroamingCars.Count == 0)
             {
                 label_Info.Text = "Keine Fahrzeuge zum parken!";
                 return;
@@ -60,9 +60,9 @@ namespace DieGarage
             label_Info.Text = string.Empty;
 
             int chosenCar = -1;
-            for (int i = 0; i < welt.garage.parkstellen.Count; i++)
+            for (int i = 0; i < welt.garage.parkingPlaces.Count; i++)
             {
-                if (welt.garage.parkstellen[i].fahrzeug != null)
+                if (welt.garage.parkingPlaces[i].vehicle != null)
                 {
                     chosenCar = i;
                     break;
@@ -79,72 +79,87 @@ namespace DieGarage
         }
         private void ExitCarFromGarage(int index)
         {
-            welt.ungeparkteFahrzeuge.Add(welt.garage.parkstellen[index].fahrzeug);
-            welt.garage.parkstellen[index].fahrzeug = null;
-            welt.garage.freiePlaetze++;
-            welt.garage.vergebenePlaetze--;
+            welt.freeroamingCars.Add(welt.garage.parkingPlaces[index].vehicle);
+            welt.garage.parkingPlaces[index].vehicle = null;
+            welt.garage.freePlaces++;
+            welt.garage.occupiedPlaces--;
 
             UpdateGUI();
         }
         private void ParkCar()
         {
-            if (welt.garage.freiePlaetze == 0)
+            if (welt.garage.freePlaces == 0)
             {
                 label_Info.Text = "Kein freier Platz!";
                 return;
             }
 
-            for (int i = 0; i < welt.garage.kapazität; i++)
+            for (int i = 0; i < welt.garage.capacity; i++)
             {
-                if (welt.garage.parkstellen[i].fahrzeug == null)
+                if (welt.garage.parkingPlaces[i].vehicle == null)
                 {
-                    welt.garage.parkstellen[i].fahrzeug = welt.ungeparkteFahrzeuge[0];
-                    welt.garage.parkstellen[i].fahrzeug.parkEndZeit = welt.time + welt.parkdauer;
-                    label_Info.Text = "Endparkzeit gesetzt auf: "
-                        + TimeSpan.FromSeconds(welt.garage.parkstellen[i].fahrzeug.parkEndZeit);
-                    welt.ungeparkteFahrzeuge.RemoveAt(0);
+                    welt.garage.parkingPlaces[i].vehicle = welt.freeroamingCars[0];
+                    welt.garage.parkingPlaces[i].vehicle.parkingEndTime = welt.time + welt.parktime;
+ //                   label_Info.Text = "Endparkzeit gesetzt auf: "
+ //                       + TimeSpan.FromSeconds(welt.garage.parkingPlaces[i].fahrzeug.parkingEndTime);
+                    welt.freeroamingCars.RemoveAt(0);
                     break;
                 }
             }
-            welt.garage.freiePlaetze--;
-            welt.garage.vergebenePlaetze++;
+            welt.garage.freePlaces--;
+            welt.garage.occupiedPlaces++;
+            welt.lastTimeCarParked = welt.time;
 
             UpdateGUI();
         }
         private void UpdateGUI()
         {
             Ungeparkte_Fahrzeuge.Items.Clear();
-            for (int i = 0; i < welt.ungeparkteFahrzeuge.Count; i++)
+            for (int i = 0; i < welt.freeroamingCars.Count; i++)
             {
-                Ungeparkte_Fahrzeuge.Items.Add(welt.ungeparkteFahrzeuge[i].kennzeichen);
+                Ungeparkte_Fahrzeuge.Items.Add(welt.freeroamingCars[i].numberPlate);
             }
             Geparkte_Fahrzeuge.Items.Clear();
-            for (int i = 0; i < welt.garage.parkstellen.Count; i++)
+            for (int i = 0; i < welt.garage.parkingPlaces.Count; i++)
             {
-                if (welt.garage.parkstellen[i].fahrzeug != null)
+                if (welt.garage.parkingPlaces[i].vehicle != null)
                 {
-                    Geparkte_Fahrzeuge.Items.Add(welt.garage.parkstellen[i].fahrzeug.kennzeichen);
+                    Geparkte_Fahrzeuge.Items.Add(welt.garage.parkingPlaces[i].vehicle.numberPlate);
                 }
             }
-            Auslastung.Text = welt.garage.kapazität - welt.garage.freiePlaetze + " / " + welt.garage.kapazität;
+            Auslastung.Text = welt.garage.capacity - welt.garage.freePlaces + " / " + welt.garage.capacity;
 
-            var percentage = (float)welt.garage.vergebenePlaetze / (float)welt.garage.kapazität * 100;
+            var percentage = (float)welt.garage.occupiedPlaces / (float)welt.garage.capacity * 100;
             ProgressBar_Auslastung.Value = (int)percentage;
         }
 
         private void Button_CheckCar_Click(object sender, EventArgs e)
         {
             var id = Geparkte_Fahrzeuge.SelectedIndex;
-            if (id == -1)
+            var searchedNumberPlate = TextBox_NumberPlate.Text;
+            if (id == -1 && searchedNumberPlate == "")
             {
                 label_Info.Text = "Kein geparktes Fahrzeug ausgewählt!";
                 return;
             }
+            if(searchedNumberPlate != string.Empty)
+            {
+                for (int i = 0; i < welt.garage.parkingPlaces.Count; i++)
+                {
+                    if(welt.garage.parkingPlaces[i].vehicle != null)
+                    {
+                        if(welt.garage.parkingPlaces[i].vehicle.numberPlate == searchedNumberPlate)
+                        {
+                            id = i;
+                        }
+                    }
+                }
+            }
 
-            var etage = welt.garage.parkstellen[id].etage;
-            var art = welt.garage.parkstellen[id].fahrzeug.fahrzeugart;
-            var kennzeichen = welt.garage.parkstellen[id].fahrzeug.kennzeichen;
-            label_Info.Text = "Art: " + art + "\n\nKennzeichen: " + kennzeichen + "\n\nEtage: " + etage + "\n\nPlatz: " + id;
+            var deck = welt.garage.parkingPlaces[id].deck;
+            var type = welt.garage.parkingPlaces[id].vehicle.vehicleType;
+            var numberPlate = welt.garage.parkingPlaces[id].vehicle.numberPlate;
+            label_Info.Text = "Art: " + type + "\n\nKennzeichen: " + numberPlate + "\n\nEtage: " + deck + "\n\nPlatz: " + id;
         }
 
         private void Button_Exit_Click(object sender, EventArgs e)
@@ -155,18 +170,25 @@ namespace DieGarage
         private void Timer_Tick(object sender, EventArgs e)
         {
             if (welt is null) return;
-            welt.time += 1 * welt.speed;
-            welt.time = Math.Round(welt.time, 1);
-            label_VergangeneZeit.Text = TimeSpan.FromSeconds(welt.time).ToString();
+            welt.time += 0.1d * welt.speed;
+            label_VergangeneZeit.Text = TimeSpan.FromSeconds(Math.Round(welt.time, 0)).ToString();
 
-            for (int i = 0; i < welt.garage.parkstellen.Count; i++)
+            for (int i = 0; i < welt.garage.parkingPlaces.Count; i++)
             {
-                if (welt.garage.parkstellen[i].fahrzeug != null)
+                if (welt.garage.parkingPlaces[i].vehicle != null)
                 {
-                    if (welt.garage.parkstellen[i].fahrzeug.parkEndZeit <= welt.time)
+                    if (welt.garage.parkingPlaces[i].vehicle.parkingEndTime <= welt.time)
                     {
                         ExitCarFromGarage(i);
                     }
+                }
+            }
+
+            if (welt.freeroamingCars.Count > 0)
+            {
+                if (welt.lastTimeCarParked + welt.timeBetweenParkingTries <= welt.time)
+                {
+                    ParkCar();
                 }
             }
         }
@@ -191,16 +213,16 @@ namespace DieGarage
 
         private void TrackBar_ParkversucheProStunde_Scroll(object sender, EventArgs e)
         {
+            label_Parkversuche.Text = TrackBar_ParkversucheProStunde.Value.ToString();
             if (welt is null) return;
-            welt.parkversucheProStunde = TrackBar_ParkversucheProStunde.Value;
-
+            welt.timeBetweenParkingTries = 3600 / TrackBar_ParkversucheProStunde.Value;
         }
 
         private void TrackBar_Parkdauer_Scroll(object sender, EventArgs e)
         {
+            label_Parkdauer.Text = TimeSpan.FromSeconds(welt.parktime).ToString();
             if (welt is null) return;
-            welt.parkdauer = TrackBar_Parkdauer.Value;
-            label_Parkdauer.Text = TimeSpan.FromSeconds(welt.parkdauer).ToString();
+            welt.parktime = TrackBar_Parkdauer.Value;
         }
     }
 }
