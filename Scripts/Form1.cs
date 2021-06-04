@@ -82,6 +82,7 @@ namespace DieGarage
             welt.freeroamingCars.Add(welt.garage.parkingPlaces[index].vehicle);
             welt.garage.parkingPlaces[index].vehicle = null;
             welt.garage.freePlaces++;
+            label_FreiePlaetze.Text = welt.garage.freePlaces.ToString();
             welt.garage.occupiedPlaces--;
 
             UpdateGUI();
@@ -107,6 +108,7 @@ namespace DieGarage
                 }
             }
             welt.garage.freePlaces--;
+            label_FreiePlaetze.Text = welt.garage.freePlaces.ToString();
             welt.garage.occupiedPlaces++;
             welt.lastTimeCarParked = welt.time;
 

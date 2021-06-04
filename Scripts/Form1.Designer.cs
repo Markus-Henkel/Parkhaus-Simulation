@@ -66,6 +66,8 @@ namespace DieGarage
             this.label_Speed = new System.Windows.Forms.Label();
             this.TextBox_NumberPlate = new System.Windows.Forms.TextBox();
             this.label_KennzeichenSucheInfo = new System.Windows.Forms.Label();
+            this.label_FreiePlaetzeInfo = new System.Windows.Forms.Label();
+            this.label_FreiePlaetze = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Decks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParkplaetzePerDeck)).BeginInit();
             this.panel_Konfiguration.SuspendLayout();
@@ -390,10 +392,10 @@ namespace DieGarage
             // TrackBar_Speed
             // 
             this.TrackBar_Speed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TrackBar_Speed.Location = new System.Drawing.Point(646, 157);
+            this.TrackBar_Speed.Location = new System.Drawing.Point(634, 157);
             this.TrackBar_Speed.Maximum = 100;
             this.TrackBar_Speed.Name = "TrackBar_Speed";
-            this.TrackBar_Speed.Size = new System.Drawing.Size(534, 45);
+            this.TrackBar_Speed.Size = new System.Drawing.Size(546, 45);
             this.TrackBar_Speed.TabIndex = 24;
             this.TrackBar_Speed.Value = 1;
             this.TrackBar_Speed.Scroll += new System.EventHandler(this.TrackBar_Speed_Scroll);
@@ -491,12 +493,35 @@ namespace DieGarage
             this.label_KennzeichenSucheInfo.TabIndex = 35;
             this.label_KennzeichenSucheInfo.Text = "Suche Kennzeichen:";
             // 
+            // label_FreiePlaetzeInfo
+            // 
+            this.label_FreiePlaetzeInfo.AutoSize = true;
+            this.label_FreiePlaetzeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FreiePlaetzeInfo.Location = new System.Drawing.Point(1021, 425);
+            this.label_FreiePlaetzeInfo.Name = "label_FreiePlaetzeInfo";
+            this.label_FreiePlaetzeInfo.Size = new System.Drawing.Size(159, 31);
+            this.label_FreiePlaetzeInfo.TabIndex = 36;
+            this.label_FreiePlaetzeInfo.Text = "Freie Plätze";
+            // 
+            // label_FreiePlaetze
+            // 
+            this.label_FreiePlaetze.AutoSize = true;
+            this.label_FreiePlaetze.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FreiePlaetze.Location = new System.Drawing.Point(948, 425);
+            this.label_FreiePlaetze.Name = "label_FreiePlaetze";
+            this.label_FreiePlaetze.Size = new System.Drawing.Size(74, 31);
+            this.label_FreiePlaetze.TabIndex = 37;
+            this.label_FreiePlaetze.Text = "1600";
+            this.label_FreiePlaetze.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1209, 528);
+            this.Controls.Add(this.label_FreiePlaetze);
+            this.Controls.Add(this.label_FreiePlaetzeInfo);
             this.Controls.Add(this.label_KennzeichenSucheInfo);
             this.Controls.Add(this.TextBox_NumberPlate);
             this.Controls.Add(this.label_Speed);
@@ -581,6 +606,8 @@ namespace DieGarage
         private System.Windows.Forms.Label label_Speed;
         private System.Windows.Forms.TextBox TextBox_NumberPlate;
         private System.Windows.Forms.Label label_KennzeichenSucheInfo;
+        private System.Windows.Forms.Label label_FreiePlaetzeInfo;
+        private System.Windows.Forms.Label label_FreiePlaetze;
     }
 }
 
