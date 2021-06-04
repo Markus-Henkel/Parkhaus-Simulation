@@ -509,9 +509,8 @@ namespace DieGarage
             this.label_FreiePlaetze.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_FreiePlaetze.Location = new System.Drawing.Point(948, 425);
             this.label_FreiePlaetze.Name = "label_FreiePlaetze";
-            this.label_FreiePlaetze.Size = new System.Drawing.Size(74, 31);
+            this.label_FreiePlaetze.Size = new System.Drawing.Size(0, 31);
             this.label_FreiePlaetze.TabIndex = 37;
-            this.label_FreiePlaetze.Text = "1600";
             this.label_FreiePlaetze.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Form1
